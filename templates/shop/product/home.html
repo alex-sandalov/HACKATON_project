@@ -1,0 +1,20 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block content %}
+        <div class="carousel" data-flickity='{ "wrapAround": true }'>
+            <div class="carousel-cell"><img src="{% static 'shop/img/samovyvoz.png' %}" alt="" height=300px></div>
+            <div class="carousel-cell"><img src="{% static 'shop/img/skidka.png' %}" alt="" height=300px></div>
+            <div class="carousel-cell"><img src="{% static 'shop/img/Untitled-3.png' %}" alt="" height=300px></div>
+        </div>
+
+        <div class="content">
+            <h2>ПОЧЕМУ ИМЕННО МЫ?</h2>
+            <p>
+                Мы - новая компания на рынке, которая имеет большие амбиции, самую лучшую команду и отличных поставщиков. Наша пицца - не просто еда, а произведение искусства, которое отлично будет смотреться на Вашем столе, а позже, ощущаться на Ваших языках.
+            </p>
+            <h2>ДОСТАВКА И САМОВЫВОЗ</h2>
+            <p>Пока что доставка осуществляется только по территории Кирово-Чепецка, но мы уже работаем над потенциальным расширением зоны доставки.</p>
+            <p>Самовывоз доступен по адресу: г. Кирово-Чепецк, проспект Мира, 20. Вход находится со стороны проспекта. Заказчикам с опцией самовывоза доступна скидка 30%.</p>
+            <img src="{% static 'shop/img/map.png' %}" alt="" width=1000px>
+        </div>
+{% endblock %}

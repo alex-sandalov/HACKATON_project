@@ -1,0 +1,72 @@
+{% load static %}
+<!doctype html>
+<html lang="ru">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'shop/style.css' %}">
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+
+    <title>Ресторан Джонни</title>
+
+
+  </head>
+  <body>
+    {% block header %}
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-light text-decoration-none px-5">
+            <img src="{% static 'shop/logo.svg' %}" width="40" height="40" alt="logo">
+            <span class="fs-4 px-2">Ресторан Джонни</span>
+        </a>
+        <div class="menu">
+            <ul class="nav nav-pills px-5">
+                <li class="nav-item"><a href="{% url 'shop:home' %}" class="nav-link text-light">Главная</a></li>
+                <li class="nav-item"><a href="{% url 'shop:product_list' %}" class="nav-link text-light">Каталог</a></li>
+                <li class="nav-item"><a href="{% url 'cart:cart_detail' %}" class="nav-link text-light">Корзина</a></li>
+            </ul>
+        </div>
+      </header>
+      {% endblock %}
+
+
+      <nav>
+      {% block content %}
+      {% endblock %}
+      </nav>
+
+      {% block footer %}
+      <footer class="pt-4 my-md-5 pt-md-5 border-top">
+        <div class="row px-5">
+          <div class="col-6 col-md">
+            <ul class="list-unstyled text-small">
+              <li>ООО «Ресторан Джонни» © 2022</li>
+              <li>ИНН 1234567890</li>
+              <li>ОГРН 1234567891011</li>
+            </ul>
+          </div>
+          <div class="col-6 col-md">
+            <ul class="list-unstyled text-small">
+              <li>+7(495)123-45-67</li>
+              <li>support@johnnyrestaurant.ru</li>
+              <li>г. Кирово-Чепецк, проспект Мира, 20</li>
+            </ul>
+          </div>
+          <div class="col-6 col-md">
+            <ul class="list-unstyled text-small">
+              <li>Наши социальные сети</li>
+              <li><a href="#"><img src="{% static 'shop/img/tg.svg' %}" width="30" height="30" alt="image description"></a>
+                  <a href="#"><img src="{% static 'shop/img/yout.svg' %}" width="30" height="30" alt="image description"></a>
+                  <a href="#"><img src="{% static 'shop/img/whats.svg' %}" width="30" height="30" alt="image description"></a>
+                  <a href="#"><img src="{% static 'shop/img/inst.svg' %}" width="30" height="30" alt="image description"></a></li>
+            </ul>
+          </div>
+        </div>
+      </footer>
+    {% endblock %}
+  </body>
+  <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</html>

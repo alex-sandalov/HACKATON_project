@@ -1,0 +1,73 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block content %}
+        <div class="content">
+            <h3>Каталог</h3>
+            <div class="nav">
+            <li {% if not category %}class="selected"{% endif %}>
+                <a class="nav-link text-black" href="{% url "shop:product_list" %}">Всё</a>
+            </li>
+            {% for c in categories %}
+                <li {% if category.slug == c.slug %}class="selected"{% endif %}>
+                    <a class="nav-link text-black" href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+                </li>
+            {% endfor %}
+            </div>
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                {% for product in products %} {% if product.avaible %}
+                    <div class="col">
+                      <div class="card h-100">
+                        <img src="{{ product.image_full.url}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">{{ product.name }} {% if product.category %}<span class="badge bg-danger"> {{product.category}}</span> {% endif %}</h5>
+                          <p class="card-text">от {{ product.price }} рублей</p>
+                            <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#{{ product.div }}">
+                                Подробнее
+                            </button>
+                        </div>
+                      </div>
+                    </div>
+                <div class="modal fade" id="{{ product.div }}" tabindex="-1" aria-labelledby="{{ product.div }}" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="{{ product.div }}">{{ product.name }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="card border-light" style="max-width: 28rem">
+                          <img src="{{ product.image_full.url}}" class="card-img-top" alt="...">
+                          <div class="card-body">
+                            <p class="card-text" style="color: #808080">{{ product.description }}</p>
+                            <button class="btn btn-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                Информация о пищевой ценности на 100 г.
+                            </button>
+                            <div class="collapse" id="collapseExample">
+                              <div class="card card-body">
+                                  <p>Энерг.ценность: {{ product.energy_value }} ккал</p>
+                                  <p>Белки: {{ product.squirrels }} г</p>
+                                  <p>Жиры: {{ product.fats }} г</p>
+                                  <p>Углеводы: {{ product.carbohydrates }} г</p>
+                              </div>
+                            </div>
+                            <form action="{% url "cart:cart_add" product.id %}" method="post">
+                                {{ cart_product_form }}
+                                {% csrf_token %}
+                                <input type="submit" class="btn btn-dark" value="Добавить в корзину за {{ product.price }} рублей">
+
+                            </form>
+                          </div>
+                        </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Закрыть</button>
+                          </div>
+                      </div>
+                    </div>
+                  </div>  {% endif %}{% endfor %}
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

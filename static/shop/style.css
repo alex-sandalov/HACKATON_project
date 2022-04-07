@@ -1,0 +1,67 @@
+@font-face {
+    font-family: 'font'; 
+    src: url('font.ttf');
+}
+* {
+    font-family: font, Roboto;
+}
+
+html { overflow-x: hidden; }
+
+header {
+    background-color: #e17055;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav {
+    margin-top: 80px;
+    margin-bottom: 50px;
+}
+
+header ul {
+    font-size: 18px;
+}
+.carousel {
+    background: #EEE;
+    width: 100%;
+}
+.cart {
+    text-align: center;
+    width: 1000px;
+}
+.carousel-cell {
+    width: 50%;
+    height: 300px;
+    margin-right: 5px;
+    border-radius: 5px;
+    counter-increment: gallery-cell;
+}
+
+.content {
+    padding-top: 60px;
+    width: 1200px;
+    margin: 0 auto;
+}
+.content p {
+    font-family: Roboto;
+    font-size: 22px;
+}
+
+.content h2 {
+    text-align: center
+}
+.content img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto 
+}
+footer {
+    background-color: #b2bec3;
+    width: 100%;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
